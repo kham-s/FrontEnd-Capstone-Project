@@ -1,38 +1,136 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  font-family: 'Markazi Text', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: scroll !important; /* Show scrollbars */
+}
+html, body, #root {
+  height: 100vh;
+  min-height: 100%;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+nav ul li {
+  display: inline;
+  margin-left: 40px;
+  font-family: 'Karla', sans-serif;
+}
+a {
+  color: black;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a:hover {
+  color: #f4ce14 ;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#hero-img {
+  position: relative;
+  width: 400px;
+  clip-path: inset(15% 0 15% 0 round 16px);
+  top: -80px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Markazi Text', serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3rem !important;
+  color: #f4ce14;
+  margin-block: 0;
+  margin: 0;
+  line-height: 50%;
+  
+}
+
+.main {
+  font-family: "Karla", sans-serif;
+  font-weight: 500;
+}
+
+.main h1 {
+  color: black;
+}
+
+h2 {
+  font-size: 2.5rem !important;
   color: white;
+  margin-block: 0;
+  margin-top: 0 !important;
 }
 
-.App-link {
-  color: #61dafb;
+.social li {
+  display: inline;
+  margin-right: 4px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h3 {
+  font-size: 2rem;
+}
+
+ul {
+  list-style: none;
+}
+.price {
+  font-size: 1.25rem;
+  color: #ee9972;
+}
+
+h4 {
+  font-size: 1.5rem !important;
+}
+
+h2 + p {
+  font-size: 1.25rem !important;
+}
+
+button {
+  background-color: #f4ce14 !important;
+  color: black !important;
+  border-radius: 16px;
+  border-style: none;
+  font-weight: bold;
+  min-width: 140px;
+  min-height: 40px;
+}
+
+.hamburger {
+  background-color: white !important;
+}
+
+.card {
+  display: flex;
+}
+.card:not(:last-child) {
+  margin-right: 16px;
+}
+
+.card img {
+  width: 300px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.card div {
+  flex: 1 1 auto;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  
+
+}
+.illustration {
+  height: 200px;
+  flex-shrink: 1;
+}
+
+.details {
+  height: 100%;
 }
