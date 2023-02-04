@@ -32,7 +32,6 @@ const Highlights = () => {
           justifyContent="space-between"
           alignItems="left"
           py={30}
-          px={16}
         >
           <Box>
           <h1>This weeks specials!</h1>
@@ -41,7 +40,7 @@ const Highlights = () => {
           <button>Online Menu</button>
           </Box>
         </HStack>
-        <Flex justifyContent="space-between" align="top"  minHeight="500px" px={16} flexWrap="wrap">
+        <Flex justifyContent="space-between" align="top"  minHeight="500px" flexWrap="wrap">
           {items.map(item => (
             <Card key={item.key} item={item} />
           ))}

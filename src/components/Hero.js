@@ -14,7 +14,7 @@ const Hero = () => {
           alignItems="left"
           maxWidth="250px"
           color="white">
-          <Heading as="h1">Little Lemon</Heading>
+          <Heading as="h1" size="2xl" lineHeight="none">Little Lemon</Heading>
           <Heading as="h2">Chicago</Heading>
           <Text>
             We are a family owned Mediterranean restaurant,

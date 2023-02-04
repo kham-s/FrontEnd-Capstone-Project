@@ -28,12 +28,14 @@ const socials = [
 
 const Footer = () => {
   return (
+    <Box backgroundColor="#edefee">
     <Box color="black" maxWidth="1280px" margin="0 auto" marginBottom={16} width="100%" alignSelf="flex-end" flexGrow={0}>
       <Flex
         px={16}
         py={4}
         justifyContent="space-between"
         alignItems="left"
+        flexWrap="wrap"
       >
         <Box>
           <img src="/assets/Logo.svg" alt="Little lemon Restaurant Logo" />
@@ -68,6 +70,7 @@ const Footer = () => {
             </ul> 
         </Box>
       </Flex>
+    </Box>
     </Box>
   );
 };

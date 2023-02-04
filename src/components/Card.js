@@ -24,7 +24,7 @@ const Card = (props) => {
             <h3>{props.item.name}</h3>
             </Box>
             <Box align="right">
-              <span class="price">${props.item.price}</span>
+              <span className="price">${props.item.price}</span>
             </Box>
           </HStack>
           <Box>
