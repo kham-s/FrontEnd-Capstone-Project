@@ -36,19 +36,11 @@ a:hover {
   top: -80px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Markazi Text', serif !important;
-  margin: 0;
-  padding: 0;
-}
-
 h1 {
-  font-size: 3rem !important;
   color: #f4ce14;
   margin-block: 0;
   margin: 0;
   line-height: 50%;
-  
 }
 
 .main {
@@ -61,7 +53,6 @@ h1 {
 }
 
 h2 {
-  font-size: 2.5rem !important;
   color: white;
   margin-block: 0;
   margin-top: 0 !important;
@@ -72,9 +63,6 @@ h2 {
   margin-right: 4px;
 }
 
-h3 {
-  font-size: 2rem;
-}
 
 ul {
   list-style: none;
@@ -100,6 +88,8 @@ button {
   font-weight: bold;
   min-width: 140px;
   min-height: 40px;
+  margin-top: 20px;
+  padding: 10px;
 }
 
 .hamburger {
@@ -133,4 +123,18 @@ button {
 
 .details {
   height: 100%;
+}
+
+label {
+  margin-top: 20px;
+}
+
+select::-ms-expand {
+  display: none !important;
+}
+
+button[type=submit] {
+  padding: 10px;
+  border-radius: 16px;
+  margin-top: 20px;
 }
