@@ -1,4 +1,5 @@
 import { Box, HStack, VStack, Heading, Text, Image } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -20,7 +21,7 @@ const Hero = () => {
             We are a family owned Mediterranean restaurant,
             focused on traditional recipes served with a modern twist.
           </Text>
-          <button>Reserve a Table</button>
+          <Link to="/booking"><button>Reserve a Table</button></Link>
         </VStack>
         <VStack>
           <Image src="assets/restauranfood.jpg" id="hero-img" display={["none","none","none","block"]}/>

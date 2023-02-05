@@ -15,6 +15,7 @@ import { AlertProvider } from "./context/alertContext";
 import Alert from "./components/Alert";
 import './App.css';
 import theme  from  "./components/CustomTheme";
+import ConfirmedBooking from "./components/ConfirmedBooking";
 
 const emotionCache = createCache({
   key: 'emotion-css-cache',
@@ -45,6 +46,7 @@ function App() {
                 <Route path="/booking" element={<BookingPage />}></Route>
                 <Route path="/order" element={<OrderPage />}></Route>
                 <Route path="/login" element={<LoginPage />}></Route>
+                <Route path="/confirmation" element={<ConfirmedBooking />}></Route>
               </Routes>
             </Box>
           </Box>

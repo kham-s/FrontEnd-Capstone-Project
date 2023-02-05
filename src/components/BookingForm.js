@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { 
   Box, 
   VStack,
@@ -12,64 +12,65 @@ import {
  } from "@chakra-ui/react";
 import * as Yup from 'yup';
 import { useFormik } from "formik";
-import useSubmit from "../hooks/useSubmit";
-import {useAlertContext} from "../context/alertContext";
+import {submitAPI} from "./Api";
+import { useNavigate } from "react-router-dom";
 
-const BookingForm = () => {
-  const {isLoading, response, submit} = useSubmit();
-  const { onOpen } = useAlertContext();
-  useEffect(() => {
-    if (response) {
-      onOpen(response.type, response.message);
 
-      if (response.type === "success") {
-        formik.resetForm();
-      }
-    }
-  }, [response]);
+
+const BookingForm = (props) => {
+  let currentDate = new Date().toISOString().slice(0,10);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
-      resDate: '',
+      resDate: currentDate,
       resTime: '',
       guests: 1,
       occasion: ''
     },
     onSubmit: (values) => {
-      submit(null, values);
+      if (submitAPI(values)) {
+        navigate("/confirmation");
+      };
     },
     validationSchema: Yup.object({
-      resDate: Yup.date().required('Required'),
-      resTime: Yup.string().required('Required'),
-      guests: Yup.number(),
+      resDate: Yup.date().required('Please choose a date'),
+      resTime: Yup.string().required('Please choose a booking time'),
+      guests: Yup.number()
+      .min(1, "Minimum at least 1")
+      .max(10, "Allowed maximum is 10")
+      .required(),
       occasion: Yup.string().required('Required')
     }),
   });
   return (
     <VStack alignItems="left" maxWidth={300}>
       <form onSubmit={formik.handleSubmit}>
-        <FormControl>
+        <FormControl isInvalid={formik.touched.resDate && formik.errors.resDate}>
         <FormLabel htmlFor="res-date" marginTop="4">Choose date</FormLabel>
-        <Input type="date" variant="outline" id="res-date" width="full" {...formik.getFieldProps('resDate') }/>
+        <Input type="date" variant="outline" id="res-date" width="full"  {...formik.getFieldProps('resDate') }  onChange={(e) => {
+          formik.getFieldProps('resDate').onChange(e);
+          props.dispatch({resDate: new Date(e.target.value)});}}/>
+        <FormErrorMessage>{formik.errors.resDate}</FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid={formik.touched.resTime && formik.errors.resTime}>
+        <FormLabel htmlFor="res-time">Choose time</FormLabel>
+        <Select id="res-time " size="lg" variant="outline" width="full" placeholder="Time" {...formik.getFieldProps('resTime') }>
+          {props.availableTimes.map( (time,key) => {
+            return <option key={key}>{time}</option>
+          })}
+        </Select>
+        <FormErrorMessage>{formik.errors.resTime}</FormErrorMessage>
         </FormControl>
 
-        <FormLabel htmlFor="res-time">Choose time</FormLabel>
-        <Select id="res-time " size="lg" variant="outline" width="full" components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} placeholder="Time" {...formik.getFieldProps('resTime') }>
-          <option>17:00</option>
-          <option>18:00</option>
-          <option>19:00</option>
-          <option>20:00</option>
-          <option>21:00</option>
-          <option>22:00</option>
-        </Select>
-
-        <FormControl>
+        <FormControl isInvalid={formik.touched.guests && formik.errors.guests}>
         <FormLabel htmlFor="guests">Number of guests</FormLabel>
         <Input type="number" placeholder="1" min="1" max="10" id="guests" {...formik.getFieldProps('guests') } width="full" />
+        <FormErrorMessage>{formik.errors.guests}</FormErrorMessage>
         </FormControl>
         <FormControl>
         <FormLabel htmlFor="occasion">Occasion</FormLabel>
-        <Select id="occasion" variant="filled" size="lg" placeholder="Select the occasion"  width="full" {...formik.getFieldProps('occasion') }>
+        <Select id="occasion" variant="filled" size="lg" placeholder="Select the occasion"  width="full" {...formik.getFieldProps('occasion') } >
           <option>Birthday</option>
           <option>Anniversary</option>
         </Select>
